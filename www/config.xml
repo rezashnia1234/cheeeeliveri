@@ -75,7 +75,7 @@
 	<!-- <plugin name="phonegap-plugin-barcodescanner" source="npm" /> -->
 	<!-- <plugin spec="https://github.com/Telerik-Verified-Plugins/BarcodeScanner.git" source="git" /> -->
 	<plugin spec="https://github.com/VersoSolutions/CordovaClipboard.git" source="git" />
-	<plugin spec="https://github.com/pusheco/cordova-sample/tree/master/platforms/android.git" source="git" />
+	<plugin spec="https://github.com/pusheco/cordova-sample/tree/master/platforms/android.git" platform="android" source="git" />
 
 
 	<plugin spec="https://github.com/Paldom/UniqueDeviceID.git" source="git" />
