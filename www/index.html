@@ -55,6 +55,14 @@
 			setTimeout(function(){ jQuery('.preloader').addClass("display_none"); }, 1000);
 			iframe_body.css("min-height",window_height + "px");
 		}
+		function show_preloader() {
+			jQuery('.preloader').removeClass("display_none");
+			jQuery('.preloader').css("opacity","0.4");
+		}
+		function hide_preloader() {		
+			setTimeout(function(){ jQuery('.preloader').css("opacity","0"); }, 300);
+			setTimeout(function(){ jQuery('.preloader').addClass("display_none"); }, 1000);
+		}
 		function alertDismissed_check_net(){
 			console.log("alertDismissed_check_net : loop :" + window.sessionStorage.getItem("do_loop"));
 			if(window.sessionStorage.getItem("do_loop")=="1")
@@ -63,30 +71,6 @@
 				check_net(true,true,true);
 			}
 		};
-		function check_server(handle_check_server) {
-			var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
-			$.ajax({
-					url: server_url + "check_net.aspx",
-					type: "POST",
-					data: {
-						act: "check_net",//timeStampInMs
-					},
-					//async: true,
-					success : function(text)
-					{
-						handle_check_server(text);
-					},
-					error: function(jqXHR, exception) {
-						window.sessionStorage.setItem("do_loop","1");
-						navigator.notification.alert(
-							'شما برای استفاده از خدمات این نرم افزار به اینترنت نیاز دارید!',  // message
-							alertDismissed_check_net,         // callback
-							'توجه',            // title
-							'تائید'                  // buttonName
-						);
-					},
-			});
-		}
 		function check_net(show_alert,do_loop,reload){
 			if(navigator.connection.type)
 				networkState = navigator.connection.type;
@@ -111,20 +95,6 @@
 				}
 				return false;
 			}
-			check_server(function(text){
-				console.log(text);
-				if(text!="1")
-				{
-					window.sessionStorage.setItem("do_loop","1");
-					navigator.notification.alert(
-						'شما برای استفاده از خدمات این نرم افزار به اینترنت نیاز دارید!',  // message
-						alertDismissed_check_net,         // callback
-						'توجه',            // title
-						'تائید'                  // buttonName
-					);
-					return false;
-				}
-			});
 			if(reload)
 			{
 				var iframe = document.getElementById("iframe");
@@ -222,6 +192,125 @@
 				check_net(true,true,false);
 			}
 		}, 2500);
+		$( document ).ready(function() {
+			$("#tab-1 input").keypress(function (e) {
+				if (e.which == 13 && $(this).val().length>1) {
+					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent($(this).val()) + "&key=district";
+					return false;    //<---- Add this line
+				}
+			});
+			$("#tab-2 input").keypress(function (e) {
+				if (e.which == 13 && $(this).val().length>1) {
+					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent($(this).val()) + "&key=restaurant";
+					return false;    //<---- Add this line
+				}
+			});
+			$("#tab-3 input").keypress(function (e) {
+				if (e.which == 13 && $(this).val().length>1) {
+					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent($(this).val()) + "&key=food";
+					return false;    //<---- Add this line
+				}
+			});
+			$("#tab-1 input").width($("#tab-1").width() - 62 + "px");
+			$("#item1").on('click',function(){
+				$(this).addClass("active");
+				$('#item2').removeClass("active");
+				$('#item3').removeClass("active");
+				
+				$('#tab-1').addClass("active");
+				$('#tab-2').removeClass("active");
+				$('#tab-3').removeClass("active");
+			});
+			$("#item2").on('click',function(){
+				$('#item1').removeClass("active");
+				$(this).addClass("active");
+				$('#item3').removeClass("active");
+
+				$('#tab-1').removeClass("active");
+				$('#tab-2').addClass("active");
+				$('#tab-3').removeClass("active");
+			});
+			$("#item3").on('click',function(){
+				$('#item1').removeClass("active");
+				$('#item2').removeClass("active");
+				$(this).addClass("active");
+
+				$('#tab-1').removeClass("active");
+				$('#tab-2').removeClass("active");
+				$('#tab-3').addClass("active");
+			});
+			
+			
+			
+
+			
+			function geoFindMe() {
+				show_preloader();
+				tryGeolocation();
+			}
+
+			var apiGeolocationSuccess = function (position) {
+				SendData(position.coords.latitude, position.coords.longitude);
+			};
+			var tryAPIGeolocation = function () {
+				jQuery.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC-QYXybhKWDZVdtnI2o3FjAcTZxXiX0cM", function (success) {
+					apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+				})
+					.fail(function (err) {
+						hide_preloader();
+						alert("API Geolocation error! \n\n" + err);
+					});
+			};
+			var browserGeolocationSuccess = function (position) {
+				SendData(position.coords.latitude, position.coords.longitude);
+			};
+			var browserGeolocationFail = function (error) {
+				hide_preloader();
+				switch (error.code) {
+					case error.TIMEOUT:
+						alert("Browser geolocation error !\n\nTimeout.");
+						break;
+					case error.PERMISSION_DENIED:
+						if (error.message.indexOf("Only secure origins are allowed") == 0) {
+							tryAPIGeolocation();
+						}
+						break;
+					case error.POSITION_UNAVAILABLE:
+						alert("Browser geolocation error !\n\nPosition unavailable.");
+						break;
+				}
+			};
+			var tryGeolocation = function () {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(
+						browserGeolocationSuccess,
+						browserGeolocationFail,
+						{maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+				}
+			};
+
+			function SendData(latitude, longitude) {
+				//send ajax request
+				$.get("https://chindi.ir/site/save-geo", {lat: latitude, lon: longitude})
+					.done(function (data) {
+						var response = JSON.parse(data);
+						if (response.Status == 'success') {
+							// go to search
+							window.location = 'https://chindi.ir/search?location=' + response.Data;
+
+						}
+						else {
+							alert(response.Message);
+							hide_preloader();
+						}
+					});
+			}
+
+			$("#near img").on('click',function(){
+				geoFindMe();
+			});
+			
+		});
 	</script>
 <style>
 div#header,div#near{
@@ -233,24 +322,101 @@ div#content {
     position: relative;
     width: 100%;
     text-align: center;
-    /*margin-top: -18px;*/
-    margin-top: -6%;
+    margin-top: -12px;
+    /*margin-top: -6%;*/
+}
+div#logo{
+    position: relative;
+    width: 100%;
+    text-align: center;
+	margin-top:-27px;
 }
 div#header img{
     position: relative;
     width: 100%;
 	max-width:500px;
 }
-div#content img{
+@media screen and (min-width: 700px) {
+	div#header img{max-width:650px;}
+}
+@media screen and (min-width: 1024px) {
+	div#header img{max-width:790px;}
+}
+div#content div.box{
     position: relative;
     width: 100%;
 	max-width:500px;
+	margin: 0 auto;
+}
+div#content div.tab-bar{
+    position: relative;
+    width: 80%;
+	direction: rtl;
+	text-align: right;
+    margin: 0 auto;
+}
+div#logo img {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 26px;
 }
 div#near img{
 	position: relative;
 	width: 100%;
 	max-width:41px;
-	margin-top: 8%;
+	margin-top: 99px;
+}
+.tab-item {
+    display: inline-block;
+    background-color: #b7b7b7;
+    padding: 5px 13px;
+	margin:0;
+    cursor: pointer;
+}
+.tab-item.active {background-color: #f04124;}
+#item1 {border-radius: 0 8px 0 0;}
+#item3 {border-radius: 8px 0 0 0;}
+.tab-content {
+    opacity: 0.5;
+    width: 100%;
+    background-color: #ffffff;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px 0 8px 8px;
+    min-height: 43px;
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+	transition: opacity .2s cubic-bezier(.42, 0, .34, 1.01);
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index:1;
+	direction:rtl;
+}
+.tab-content.active {
+    opacity: 1;
+	z-index:2;
+}
+#tab-1 span {
+    border-left: 2px solid #000000;
+    padding-left: 5px;
+    height: 15px;
+    display: inline-block;
+    line-height: 15px;
+}
+.tab-content input {
+    border: 0px;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0;
+}
+#tab-1 input {
+    width: calc(100% - 62px);
+    margin-right: 12px;
 }
 </style>
 </head>
@@ -260,11 +426,23 @@ div#near img{
 <div id="header">
 	<img src="images/header.jpg">
 </div>
-<div id="content">
+<div id="logo">
 	<img src="images/content.png">
 </div>
+<div id="content">
+	<div class="box">
+		<div class="tab-bar">
+			<div id="item1" class="tab-item active">محله</div><div id="item2" class="tab-item">رستوران</div><div id="item3" class="tab-item">غذا</div>
+		</div>
+		<div class="tab-box">
+			<div id="tab-1" class="tab-content active"><span>مشهد</span><input type="text" value="" name="district" id="district" placeholder="نام محل خود را وارد کنید"></div>
+			<div id="tab-2" class="tab-content"><input type="text" value="" name="restaurant" id="restaurant" placeholder="نام رستوران خود را وارد کنید"></div>
+			<div id="tab-3" class="tab-content"><input type="text" value="" name="food" id="food" placeholder="نام غذای خود را وارد کنید"></div>
+		</div>
+	</div>
+</div>
 <div id="near">
-	<img src="images/near.png">
+	<img src="images/near.png"  >
 </div>
 
 

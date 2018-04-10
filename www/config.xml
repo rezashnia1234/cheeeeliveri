@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "ir.smgroup.cafejoo"
-        version   = "1.1.0">
+        id        = "chindi.ir.chindi"
+        version   = "1.0.0">
 		
 		
-    <name>کافه جو</name>
-    <description>کافه جو</description>
+    <name>Chindi</name>
+    <description>Chindi</description>
     <author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
     <!--
 		ir.smgroup.saveimage
@@ -122,14 +122,14 @@
 	
 	<icon gap:platform="ios" height="87" width="87" src="images/splash/ios/icon-29@3x.png" />
 	<icon gap:platform="ios" height="167" width="167" src="images/splash/ios/icon-167.png" />
-
+	<!--
 	<icon gap:platform="android" gap:qualifier="ldpi" src="images/splash/android/icon-36-ldpi.png" />
 	<icon gap:platform="android" gap:qualifier="mdpi" src="images/splash/android/icon-48-mdpi.png" />
 	<icon gap:platform="android" gap:qualifier="hdpi" src="images/splash/android/icon-72-hdpi.png" />
 	<icon gap:platform="android" gap:qualifier="xhdpi" src="images/splash/android/icon-96-xhdpi.png" />
 	<icon gap:platform="android" gap:qualifier="xxhdpi" src="images/splash/android/icon-144-xxhdpi.png" />
 	<icon gap:platform="android" gap:qualifier="xxxhdpi" src="images/splash/android/icon-192-xxxhdpi.png" />
-
+	-->
 
     <!-- Define app splash screen for each platform. -->
 	<gap:splash src="images/splash/screen-hdpi-landscape.png" />
@@ -140,6 +140,7 @@
 	<gap:splash src="img/splash/splash_bkg_landscape.png" gap:platform="ios" width="2048" height="1536" />
 	-->
     <!-- Define app splash screen for each platform. -->
+	<!--
     <gap:splash src="images/splash/screen-ldpi-landscape.png"		gap:platform="android" gap:qualifier="port-ldpi" />
     <gap:splash src="images/splash/screen-mdpi-landscape.png"		gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="images/splash/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="port-hdpi" />
@@ -151,7 +152,7 @@
     <gap:splash src="images/splash/por/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="land-hdpi" />
     <gap:splash src="images/splash/por/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xhdpi" />
     <gap:splash src="images/splash/por/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xxhdpi" />
-
+	-->
 	
     <gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		width="320"		height="480" />
     <gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		width="640"		height="960" />

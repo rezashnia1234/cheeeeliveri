@@ -115,7 +115,9 @@ input[type="checkbox"]:hover:before {
 
 *{
 	font-size:16px;
-	font-family:'Droid Arabic Kufi',"Iranian_Sans",Tahoma !important;
+	font-family:"IRANSans",Tahoma !important;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline-color: transparent;
 }
 
 
