@@ -71,9 +71,11 @@
 	<!--
 	<plugin name="phonegap-plugin-push" spec="~1.9.1" source="npm">
 		<param name="SENDER_ID" value="804625540618" />
-	</plugin>
 	-->
-	<plugin spec="https://github.com/miladesign/pushe-cordova-plugin.git" platform="android" source="git" />
+	<plugin spec="https://github.com/miladesign/pushe-cordova-plugin.git" platform="android" source="git" >
+		<param name="PUSHE_TOKEN" value="222222222222" />
+		<param name="PUSHE_CR" value="11111111111111" />
+	</plugin>
 	
 	<!-- <plugin name="phonegap-plugin-barcodescanner" source="npm" /> -->
 	<!-- <plugin spec="https://github.com/Telerik-Verified-Plugins/BarcodeScanner.git" source="git" /> -->
