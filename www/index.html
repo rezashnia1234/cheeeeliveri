@@ -9,9 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/template.css">
 	<script src="js/jquery-2.2.2.min.js"></script>
     <!-- <script src="js/console.log.js"></script> -->
-	<script src="js/iframeResizer.min.js"></script>
+	<!-- <script src="js/iframeResizer.min.js"></script> -->
     <script src="cordova.js"></script>
-    <!-- <script src="js/fastclick.js"></script> -->
+    <script src="js/fastclick.js"></script>
     <!-- <script src="js/notification.js"></script> -->
 
 	<script>
@@ -23,6 +23,7 @@
 			//alert("init()");
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
 			document.addEventListener("deviceready", onDeviceReady, false);
+			/*
 			$("#iframe").iFrameResize({
 							//log:true,
 							autoResize:true,
@@ -30,6 +31,7 @@
 							resizedCallback:function(messageData){},
 							messageCallback:function(messageData){iframe_recive_massage(messageData.message);}
 			});
+			*/
 			function iframe_recive_massage(msg) {
 				if(msg=="Loading_Completed"){
 					loadcompeleted();
@@ -122,6 +124,7 @@
 			else
 				networkState = navigator.connection.effectiveType;
 			check_net(true,true,false);
+			FastClick.attach(document.body);
 		}
 		function need_internet(){
 			if(does_we_have_intenet)
@@ -419,10 +422,12 @@ div#near img{
     font-size: 13px;
     padding-right: 10px;
     height: 41px;
+	padding-top: 5px;
 }
 #tab-1 input {
-    width: calc(100% - 70px);
-    /*margin-right: 12px;*/
+	width: calc(100% - 70px);
+	padding-top: 0px;
+   /*margin-right: 12px;*/
 }
 @media screen and (min-width: 700px) {
 	div#header img{max-width:650px;}
