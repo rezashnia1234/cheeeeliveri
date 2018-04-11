@@ -255,6 +255,7 @@
 				show_preloader();
 				alert("geoFindMe()");
 				navigator.geolocation.getCurrentPosition(onSuccess, onError);
+				alert("end geoFindMe()");
 			}
 
 			function onSuccess(position) {
@@ -263,7 +264,7 @@
 			};
 			
 			function onError(error) {
-
+				alert("error");
 			}
 			
 			function SendData(latitude, longitude) {
