@@ -20,7 +20,7 @@
 		var window_height;
 		var iframe_body;
 		function init() {		
-			//alert("init()");
+			alert("init()");
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
 			document.addEventListener("deviceready", onDeviceReady, false);
 			/*
@@ -31,7 +31,6 @@
 							resizedCallback:function(messageData){},
 							messageCallback:function(messageData){iframe_recive_massage(messageData.message);}
 			});
-			*/
 			function iframe_recive_massage(msg) {
 				if(msg=="Loading_Completed"){
 					loadcompeleted();
@@ -50,13 +49,14 @@
 			window_height = $(window).height();
 			iframe_body = $("#iframe");
 			iframe_body.css("min-height",window_height + "px");
+			*/
 			
 			loadcompeleted();
 		}
 		function loadcompeleted() {		
 			setTimeout(function(){ jQuery('.preloader').css("opacity","0"); }, 300);
 			setTimeout(function(){ jQuery('.preloader').addClass("display_none"); }, 1000);
-			iframe_body.css("min-height",window_height + "px");
+			//iframe_body.css("min-height",window_height + "px");
 		}
 		function show_preloader() {
 			jQuery('.preloader').removeClass("display_none");
@@ -119,12 +119,13 @@
 		*/
 
 		function onDeviceReady() {
+			alert("onDeviceReady");
 			if(navigator.connection.type)
 				networkState = navigator.connection.type;
 			else
 				networkState = navigator.connection.effectiveType;
 			check_net(true,true,false);
-			FastClick.attach(document.body);
+			//FastClick.attach(document.body);
 		}
 		function need_internet(){
 			if(does_we_have_intenet)
@@ -173,6 +174,7 @@
 		setTimeout(function(){
 			if(!window.cordova)
 			{
+				alert("!window.cordova");
 				if(navigator.connection.type)
 					networkState = navigator.connection.type;
 				else
@@ -251,6 +253,7 @@
 			
 			function geoFindMe() {
 				show_preloader();
+				alert("geoFindMe()");
 				navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			}
 
@@ -265,6 +268,7 @@
 			
 			function SendData(latitude, longitude) {
 				//send ajax request
+				alert("SendData(" + latitude + ")");
 				$.get("https://chindi.ir/site/save-geo", {lat: latitude, lon: longitude}).done(function (data) {
 						var response = JSON.parse(data);
 						if (response.Status == 'success') {
