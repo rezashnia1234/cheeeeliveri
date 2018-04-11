@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/template.css">
 	<script src="js/jquery-2.2.2.min.js"></script>
-    <script src="js/console.log.js"></script>
+    <!-- <script src="js/console.log.js"></script> -->
 	<!-- <script src="js/iframeResizer.min.js"></script> -->
     <script src="cordova.js"></script>
     <script src="js/fastclick.js"></script>
@@ -20,7 +20,6 @@
 		var window_height;
 		var iframe_body;
 		function init() {		
-			alert("init()");
 			console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start init()');
 			document.addEventListener("deviceready", onDeviceReady, false);
 			/*
@@ -59,8 +58,8 @@
 			//iframe_body.css("min-height",window_height + "px");
 		}
 		function show_preloader() {
-			//jQuery('.preloader').removeClass("display_none");
-			//jQuery('.preloader').css("opacity","0.4");
+			jQuery('.preloader').removeClass("display_none");
+			jQuery('.preloader').css("opacity","0.4");
 		}
 		function hide_preloader() {		
 			setTimeout(function(){ jQuery('.preloader').css("opacity","0"); }, 300);
@@ -119,13 +118,12 @@
 		*/
 
 		function onDeviceReady() {
-			alert("onDeviceReady");
 			if(navigator.connection.type)
 				networkState = navigator.connection.type;
 			else
 				networkState = navigator.connection.effectiveType;
 			check_net(true,true,false);
-			//FastClick.attach(document.body);
+			FastClick.attach(document.body);
 		}
 		function need_internet(){
 			if(does_we_have_intenet)
@@ -174,7 +172,6 @@
 		setTimeout(function(){
 			if(!window.cordova)
 			{
-				alert("!window.cordova");
 				if(navigator.connection.type)
 					networkState = navigator.connection.type;
 				else
@@ -253,27 +250,24 @@
 			
 			function geoFindMe() {
 				show_preloader();
-				alert("geoFindMe()");
 				navigator.geolocation.getCurrentPosition(onSuccess, onError);
-				alert("end geoFindMe()");
 			}
 
 			function onSuccess(position) {
-				alert(position.coords.latitude);
 				SendData(position.coords.latitude, position.coords.longitude);
 			};
 			
 			function onError(error) {
-				alert("error");
+				hide_preloader();
 			}
 			
 			function SendData(latitude, longitude) {
 				//send ajax request
-				alert("SendData(" + latitude + ")");
 				$.get("https://chindi.ir/site/save-geo", {lat: latitude, lon: longitude}).done(function (data) {
 						var response = JSON.parse(data);
 						if (response.Status == 'success') {
 							// go to search
+							alert(response.Data);
 							window.location = 'https://chindi.ir/search?location=' + response.Data;
 
 						}
