@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
     <title>بسم الله الرحمن الرحيم</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/template.css">
 	<script src="js/jquery-2.2.2.min.js"></script>
     <!-- <script src="js/console.log.js"></script> -->
@@ -28,7 +29,7 @@
 							enablePublicMethods:true,
 							resizedCallback:function(messageData){},
 							messageCallback:function(messageData){iframe_recive_massage(messageData.message);}
-						});
+			});
 			function iframe_recive_massage(msg) {
 				if(msg=="Loading_Completed"){
 					loadcompeleted();
@@ -211,7 +212,8 @@
 					return false;    //<---- Add this line
 				}
 			});
-			$("#tab-1 input").width($("#tab-1").width() - 62 + "px");
+			
+			//$("#tab-1 input").width($("#tab-1").width() - 70 + "px");
 			$("#item1").on('click',function(){
 				$(this).addClass("active");
 				$('#item2').removeClass("active");
@@ -336,12 +338,6 @@ div#header img{
     width: 100%;
 	max-width:500px;
 }
-@media screen and (min-width: 700px) {
-	div#header img{max-width:650px;}
-}
-@media screen and (min-width: 1024px) {
-	div#header img{max-width:790px;}
-}
 div#content div.box{
     position: relative;
     width: 100%;
@@ -371,8 +367,9 @@ div#near img{
     display: inline-block;
     background-color: #b7b7b7;
     padding: 5px 13px;
-	margin:0;
+    margin: 0;
     cursor: pointer;
+    font-size: 13px;
 }
 .tab-item.active {background-color: #f04124;}
 #item1 {border-radius: 0 8px 0 0;}
@@ -386,7 +383,7 @@ div#near img{
     border-radius: 8px 0 8px 8px;
     min-height: 43px;
     text-align: right;
-    padding: 10px;
+    /*padding: 10px;*/
     box-sizing: border-box;
 	transition: opacity .2s cubic-bezier(.42, 0, .34, 1.01);
 	position: absolute;
@@ -397,6 +394,7 @@ div#near img{
 	z-index:1;
 	direction:rtl;
 	overflow: hidden;
+	font-family: IRANSans !important;
 }
 .tab-content.active {
     opacity: 1;
@@ -404,21 +402,35 @@ div#near img{
 }
 #tab-1 span {
     border-left: 2px solid #000000;
-    padding-left: 5px;
-    height: 15px;
+    padding-left: 9px;
+    height: 23px;
     display: inline-block;
-    line-height: 15px;
+    line-height: 25px;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 .tab-content input {
-	border: 0px;
-	display: inline-block;
-	width: 100%;
-	margin-right: 0;
-	box-sizing: border-box;
+    border: 0px;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0;
+    box-sizing: border-box;
+    font-size: 13px;
+    padding-right: 10px;
+    height: 41px;
 }
 #tab-1 input {
-    width: calc(100% - 62px);
-    margin-right: 12px;
+    width: calc(100% - 70px);
+    /*margin-right: 12px;*/
+}
+@media screen and (min-width: 700px) {
+	div#header img{max-width:650px;}
+	.tab-content input,.tab-item,#tab-1 span {font-size: 14px;}
+}
+@media screen and (min-width: 1024px) {
+	div#header img{max-width:790px;}
+	.tab-content input,.tab-item,#tab-1 span {font-size: 15px;}
 }
 </style>
 </head>
