@@ -58,15 +58,18 @@
 			loadcompeleted();
 		}
 		function loadcompeleted() {	
+			alert("1");
 			setTimeout(function(){ jQuery('.preloader').css("opacity","0"); }, 300);
 			setTimeout(function(){ jQuery('.preloader').addClass("display_none"); }, 1000);
 			//iframe_body.css("min-height",window_height + "px");
 		}
 		function show_preloader() {
+			alert("2");
 			jQuery('.preloader').removeClass("display_none");
 			jQuery('.preloader').css("opacity","1");
 		}
 		function hide_preloader() {		
+			alert("3");
 			setTimeout(function(){ jQuery('.preloader').css("opacity","0"); }, 300);
 			setTimeout(function(){ jQuery('.preloader').addClass("display_none"); }, 1000);
 		}
