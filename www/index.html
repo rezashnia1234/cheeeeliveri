@@ -136,6 +136,18 @@
 					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent(selected_val) + "&key=district&is_it_mobile=1&url=" + home_url;return false;    //<---- Add this line
 				}
 			});
+			$("#w10").select2({
+				language: "fa",
+				dir: "rtl",
+				width: "100%",
+			}).on("select2:select", function (e) {
+				var selected_val = $(this).val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک").trim();
+				if (selected_val.length>1) {
+					show_preloader()
+					console.log(selected_val); 
+					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent(selected_val) + "&key=district&is_it_mobile=1&url=" + home_url;return false;    //<---- Add this line
+				}
+			});
 		});
 			function go(){
 				var selected_val = $("#tab-3 input#food").val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک").trim();
@@ -460,11 +472,86 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
 	<img src="images/content.png">
 </div>
 <div id="content">
+				<select id="w10" class="select_item form-control" name="restaurant" dir="rtl" >
+					<option value="">نام رستوران خود را وارد كنيد</option>
+					<option value="كباب فلفلي	">كباب فلفلي	</option>
+					<option value="فست فود اميرويچ	">فست فود اميرويچ	</option>
+					<option value="پيتزا 1*2 (فرهاد)">پيتزا 1*2 (فرهاد)</option>
+					<option value="فست فود كي چي فود">فست فود كي چي فود</option>
+					<option value="رستوران ايتاليايي ليو">رستوران ايتاليايي ليو</option>
+					<option value="كترينگ مهر رضا">كترينگ مهر رضا</option>
+					<option value="فست فود ليمو (كوثر)">فست فود ليمو (كوثر)</option>
+					<option value="كباب  ريحون">كباب  ريحون</option>
+					<option value="فست فود ليمو (جانباز)">فست فود ليمو (جانباز)</option>
+					<option value="فست فود پاچينو">فست فود پاچينو</option>
+					<option value="ساندويچ دهكده">ساندويچ دهكده</option>
+					<option value="رستوران خورش باشي">رستوران خورش باشي</option>
+					<option value="كترينگ طوسي">كترينگ طوسي</option>
+					<option value="پيتزا زعفران">پيتزا زعفران</option>
+					<option value="رستوران ناندوز">رستوران ناندوز</option>
+					<option value="پيتزا كالو (كالوني)">پيتزا كالو (كالوني)</option>
+					<option value="كترينگ كلاسيك">كترينگ كلاسيك</option>
+					<option value="رستوران ياس">رستوران ياس</option>
+					<option value="غذاي خانگي فاميلي فود">غذاي خانگي فاميلي فود</option>
+					<option value="فست فود چيلي چيز">فست فود چيلي چيز</option>
+					<option value="كترينگ آسانا">كترينگ آسانا</option>
+					<option value="پيتزا شب روز">پيتزا شب روز</option>
+					<option value="فست فود وسپا فود">فست فود وسپا فود</option>
+					<option value="فست فود هاني برگر">فست فود هاني برگر</option>
+					<option value="رستوران نسيم لبنان (امام رضا)">رستوران نسيم لبنان (امام رضا)</option>
+					<option value="رستوران ايتاليايي ميلان ">رستوران ايتاليايي ميلان </option>
+					<option value="رستوران ايتاليايي نارون ">رستوران ايتاليايي نارون </option>
+					<option value="جگركي خورشيد شب">جگركي خورشيد شب</option>
+					<option value="پيتزا ايتاليايي آديشه">پيتزا ايتاليايي آديشه</option>
+					<option value="فست فود چيلي (راهنمايي)">فست فود چيلي (راهنمايي)</option>
+					<option value="كترينگ بهشت">كترينگ بهشت</option>
+					<option value="رستوران نسيم لبنان (ادبيات)">رستوران نسيم لبنان (ادبيات)</option>
+					<option value="پيتزا فدك">پيتزا فدك</option>
+					<option value="فست فود پيتزا پيتزا (وكيل آباد)">فست فود پيتزا پيتزا (وكيل آباد)</option>
+					<option value="رستوران خانه اسپاگتي">رستوران خانه اسپاگتي</option>
+					<option value="فست فود آتش برگر">فست فود آتش برگر</option>
+					<option value="رستوران آل رضا">رستوران آل رضا</option>
+					<option value="رستوران فرني">رستوران فرني</option>
+					<option value="غذاي خانگي آويشن(سلمان)">غذاي خانگي آويشن(سلمان)</option>
+					<option value="كترينگ صداقت">كترينگ صداقت</option>
+					<option value="كباب ممتاز جينار">كباب ممتاز جينار</option>
+					<option value="فست فود كلبه غذا">فست فود كلبه غذا</option>
+					<option value="رستوران خسروي">رستوران خسروي</option>
+					<option value="پيتزا فرنو">پيتزا فرنو</option>
+					<option value="پيتزا هرم">پيتزا هرم</option>
+					<option value="فست فود پيتزا پيتزا (هفت تير)">فست فود پيتزا پيتزا (هفت تير)</option>
+					<option value="فست فود پيتزا پيتزا (تلويزيون)">فست فود پيتزا پيتزا (تلويزيون)</option>
+					<option value="فست فود پيتزا پيتزا (طباطبائي) ">فست فود پيتزا پيتزا (طباطبائي) </option>
+					<option value="رستوران معين درباري (پاسداران)">رستوران معين درباري (پاسداران)</option>
+					<option value="كترينگ معين درباري (كوهسنگي)">كترينگ معين درباري (كوهسنگي)</option>
+					<option value="غذاي تركي بابا دنر">غذاي تركي بابا دنر</option>
+					<option value="كترينگ آندريا">كترينگ آندريا</option>
+					<option value="پيتزا توكا (آزادشهر)">پيتزا توكا (آزادشهر)</option>
+					<option value="ساندويچ فرهنگ">ساندويچ فرهنگ</option>
+					<option value="فست فود كامبادن">فست فود كامبادن</option>
+					<option value="فست فود آقاي لذيذ">فست فود آقاي لذيذ</option>
+					<option value="رستوران ايتاليايي  لرد">رستوران ايتاليايي  لرد</option>
+					<option value="آشپزخانه يلدا">آشپزخانه يلدا</option>
+					<option value="تاكسي پيتزا">تاكسي پيتزا</option>
+					<option value="رستوران سنتي تبريزي ها">رستوران سنتي تبريزي ها</option>
+					<option value="فست فود هات سان (هاشميه)">فست فود هات سان (هاشميه)</option>
+					<option value="فست فود پوپو">فست فود پوپو</option>
+					<option value="مرغ برياني خاتون">مرغ برياني خاتون</option>
+					<option value="فست فود راوك">فست فود راوك</option>
+					<option value="پيتزا 1*2 (وكيل آباد)">پيتزا 1*2 (وكيل آباد)</option>
+					<option value="پيتزا پيتزا">پيتزا پيتزا</option>
+					<option value="آشكده ياران گناباد">آشكده ياران گناباد</option>
+					<option value="رستوران مايسا">رستوران مايسا</option>
+					<option value="آشكده آش ماش">آشكده آش ماش</option>
+					<option value="غذاي خانگي آويشن(فرهاد)">غذاي خانگي آويشن(فرهاد)</option>
+					<option value="رستوران گندم">رستوران گندم</option>
+					<option value="كترينگ غذاي آبان">كترينگ غذاي آبان</option>
+				</select>
 	<div class="box">
 		<div class="tab-bar">
 			<div id="item1" class="tab-item active">محله</div><div id="item2" class="tab-item">رستوران</div><div id="item3" class="tab-item">غذا</div>
 		</div>
-		<div class="tab-box">
+		<div class="tab-box" style="min-height: 43px;">
 			<div id="tab-1" class="tab-content active">
 				<span class="city-name">مشهد</span>
 				<!-- <input type="text" value="" name="district" id="district" placeholder="نام محل خود را وارد کنید"> -->
