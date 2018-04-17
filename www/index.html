@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
     <title>بسم الله الرحمن الرحيم</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 	<link href="css/select2.min.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/template.css">
@@ -386,11 +386,11 @@ div#near img{
     text-align: right;
     box-sizing: border-box;
 	transition: opacity .2s cubic-bezier(.42, 0, .34, 1.01);
-	<!-- position: absolute; -->
-	<!-- top: 0px; -->
-	<!-- left: 0; -->
-	<!-- right: 0; -->
-	<!-- bottom: 0; -->
+	position: absolute; 
+	top: 0px;
+	left: 0; 
+	right: 0;
+	bottom: 0;
 	z-index:1;
 	direction:rtl;
 	overflow: hidden;
@@ -952,14 +952,6 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
 			</div>
 			<div id="tab-2" class="tab-content">
 				<!-- <input type="text" value="" name="restaurant" id="restaurant" placeholder="نام رستوران خود را وارد کنید"> -->
-			</div>
-			<div id="tab-3" class="tab-content">
-				<input type="text" value="" name="food" id="food" placeholder="نام غذای خود را وارد کنید">
-				<span id="go" onclick="go();">برو</span>
-			</div>
-		</div>
-	</div>
-</div>
 				<select id="w1" class="select_item form-control" name="restaurant" dir="rtl" >
 					<option value="">نام رستوران خود را وارد كنيد</option>
 					<option value="كباب فلفلي	">كباب فلفلي	</option>
@@ -1035,6 +1027,14 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
 					<option value="رستوران گندم">رستوران گندم</option>
 					<option value="كترينگ غذاي آبان">كترينگ غذاي آبان</option>
 				</select>
+			</div>
+			<div id="tab-3" class="tab-content">
+				<input type="text" value="" name="food" id="food" placeholder="نام غذای خود را وارد کنید">
+				<span id="go" onclick="go();">برو</span>
+			</div>
+		</div>
+	</div>
+</div>
 <div id="near">
 	<img src="images/near.png"  >
 </div>
