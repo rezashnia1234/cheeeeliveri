@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
     <title>بسم الله الرحمن الرحيم</title>
-    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link href="css/select2.min.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/font.css">
     <link rel="stylesheet" type="text/css" href="css/template.css">
@@ -439,6 +439,15 @@ div#near img{
 div#tab-2 {padding-top: 7px;}
 .tab-content span {font-size: 13px;}
 span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font-weight: bold;padding: 11px;}
+#tab-1 *,#tab-2 *{
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text;   /* Chrome/Safari/Opera */
+  -khtml-user-select: text;    /* Konqueror */
+  -moz-user-select: text;      /* Firefox */
+  -ms-user-select: text;       /* Internet Explorer/Edge */
+  user-select: text;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
 </style>
 </head>
 <body onload="init();" style="background-color: #a49d8e;">
