@@ -321,7 +321,7 @@
 					});
 			}
 
-			$("#near img").on('click',function(){
+			$("#near img#near-btn").on('click',function(){
 				geoFindMe();
 			});
 			
@@ -370,14 +370,14 @@ div#content div.tab-bar{
     margin: 0 auto;
 	z-index:2;
 }
-div#logo img {
+div#logo img#logo-img {
     position: relative;
     width: 80%;
     max-width: 500px;
     margin-bottom: 26px;
 	z-index:2;
 }
-div#near img{
+div#near img#near-btn{
 	position: relative;
 	width: 100%;
 	max-width:41px;
@@ -469,6 +469,7 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
   user-select: text;           /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+.bg{position:  absolute;left:  0;top: 0;width:  100%;height:  100%;z-index:  1;}
 </style>
 </head>
 <body onload="init();" style="background-color: #a49d8e;">
@@ -479,7 +480,8 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
 	<img src="images/header.jpg">
 </div>
 <div id="logo">
-	<img src="images/content.png">
+	<img src="images/content.png" id="logo-img">
+	<img src="images/blank--0.png" class="bg"  />
 </div>
 <div id="content">
 	<div class="box">
@@ -1065,10 +1067,12 @@ span#go {display: inline-block;position: absolute;color: red;left: 0;top: 0;font
 			</div>
 		</div>
 	</div>
+	<img src="images/blank--0.png" class="bg"  />
 </div>
-<img src="images/blank.png" style="position:  absolute;left:  0;top: 0;width:  100%;height:  100%;z-index:  1;" />
+
 <div id="near">
-	<img src="images/near.png"  >
+	<img src="images/near.png" id="near-btn" >
+	<img src="images/blank--0.png" class="bg"  />
 </div>
 
 
