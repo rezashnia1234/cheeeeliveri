@@ -117,7 +117,7 @@
 				dir: "rtl",
 				width: ($("#tab-1").width() - 70) + "px",
 			}).on("select2:select", function (e) {
-				var selected_val = $(this).val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک").trim();
+				var selected_val = $(this).val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک");
 				if (selected_val.length>1) {
 					show_preloader()
 					console.log(selected_val); 
@@ -129,11 +129,11 @@
 				dir: "rtl",
 				width: "100%",
 			}).on("select2:select", function (e) {
-				var selected_val = $(this).val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک").trim();
+				var selected_val = $(this).val().replace(/ي/g, "ی").replace(/و/g, "و").replace(/ك/g, "ک");
 				if (selected_val.length>1) {
 					show_preloader()
 					console.log(selected_val); 
-					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent(selected_val) + "&key=district&is_it_mobile=1&url=" + home_url;return false;    //<---- Add this line
+					window.location.href = "https://chindi.ir/search?keyword=" + encodeURIComponent(selected_val) + "&key=restaurant&is_it_mobile=1&url=" + home_url;return false;    //<---- Add this line
 				}
 			});
 			$("#w10").select2({
